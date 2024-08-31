@@ -3,12 +3,13 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AppService } from '../services/app.service';
 import { App } from '../entities/app.entity'; // Rota da entidade App
 import { CreateAppDto } from '../dto/create-app.dto'; // Rota do DTO CreateAppDto
+import { UpdateAppDto } from '../dto/update-app.dto'; // Rota do DTO UpdateAppDto
 
 @Resolver(() => App)
 export class AppResolver {
   constructor(private readonly appService: AppService) {}
 
-  @Mutation(() => App) // O tipo de retorno aqui deve ser decorado com @ObjectType
+  @Mutation(() => App)
   async createApp(@Args('createAppInput') createAppDto: CreateAppDto): Promise<App> {
     return this.appService.create(createAppDto);
   }
