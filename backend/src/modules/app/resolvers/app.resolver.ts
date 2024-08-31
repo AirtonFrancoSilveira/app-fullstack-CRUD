@@ -1,9 +1,9 @@
 // src/modules/app/resolvers/app.resolver.ts
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AppService } from '../services/app.service';
-import { App } from '../entities/app.entity'; // Rota da entidade App
-import { CreateAppDto } from '../dto/create-app.dto'; // Rota do DTO CreateAppDto
-import { UpdateAppDto } from '../dto/update-app.dto'; // Rota do DTO UpdateAppDto
+import { App } from '../entities/app.entity';
+import { CreateAppDto } from '../dto/create-app.dto';
+import { UpdateAppDto } from '../dto/update-app.dto';
 
 @Resolver(() => App)
 export class AppResolver {
