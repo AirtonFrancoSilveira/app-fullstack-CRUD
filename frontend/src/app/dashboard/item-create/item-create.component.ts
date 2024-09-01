@@ -16,10 +16,12 @@ export class ItemCreateComponent {
     private appService: AppService,
     private router: Router
   ) {
+    // Inicialização do formulário com validações
     this.createForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      age: ['', [Validators.required, Validators.min(1)]],
+      age: [null, [Validators.required, Validators.min(1), Validators.max(100)]],
+      curso: ['', Validators.required], // Curso com opção padrão "Selecione um curso"
       notasPorBimestre: this.fb.group({
         bimestre1: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
         bimestre2: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
@@ -38,6 +40,7 @@ export class ItemCreateComponent {
         name: formValues.name,
         email: formValues.email,
         age: formValues.age,
+        curso: formValues.curso, // Inclui o curso no envio dos dados
         notasPorBimestre: [
           { bimestre: '1º Bimestre', nota: formValues.notasPorBimestre.bimestre1 },
           { bimestre: '2º Bimestre', nota: formValues.notasPorBimestre.bimestre2 },
