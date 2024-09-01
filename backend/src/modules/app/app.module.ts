@@ -7,7 +7,7 @@ import { App, AppSchema } from './entities/app.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: App.name, schema: AppSchema }]),
+    MongooseModule.forFeature([{ name: App.name, schema: AppSchema }])
   ],
   providers: [AppService, AppResolver],
 })

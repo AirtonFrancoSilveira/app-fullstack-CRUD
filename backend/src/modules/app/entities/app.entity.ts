@@ -23,15 +23,15 @@ export class App extends Document {
 
   @Field(() => [NotaBimestre], { nullable: true })
   @Prop({ type: [{ bimestre: String, nota: Number }], default: [] })
-  notasPorBimestre?: NotaBimestre[];  // Notas por bimestre
+  notasPorBimestre?: NotaBimestre[]; // Notas por bimestre
 
   @Field({ nullable: true })
   @Prop()
-  media?: number;  // Média das notas
+  media?: number; // Média das notas
 
   @Field({ nullable: true })
   @Prop()
-  status?: string;  // Status do aluno
+  status?: string; // Status do aluno
 
   @Field({ nullable: true })
   @Prop()

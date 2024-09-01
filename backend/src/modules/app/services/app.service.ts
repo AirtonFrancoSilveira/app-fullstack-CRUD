@@ -16,10 +16,12 @@ export class AppService {
       { min: 8, max: 12, turma: 'Kids 2' },
       { min: 13, max: 15, turma: 'Teens' },
       { min: 16, max: 17, turma: 'Teens 2' },
-      { min: 18, max: Infinity, turma: 'Adults' }
+      { min: 18, max: Infinity, turma: 'Adults' },
     ];
 
-    const turma = turmaMap.find(range => age >= range.min && age <= range.max);
+    const turma = turmaMap.find(
+      (range) => age >= range.min && age <= range.max
+    );
     return turma ? turma.turma : 'Unknown';
   }
 
@@ -46,11 +48,11 @@ export class AppService {
     const media = this.calculateMedia(createAppDto.notasPorBimestre || []);
     const status = this.determineStatus(media);
 
-    const createdApp = new this.appModel({ 
-      ...createAppDto, 
-      turma, 
-      media, 
-      status 
+    const createdApp = new this.appModel({
+      ...createAppDto,
+      turma,
+      media,
+      status,
     });
     return createdApp.save();
   }
@@ -68,11 +70,13 @@ export class AppService {
     const media = this.calculateMedia(updateAppDto.notasPorBimestre || []);
     const status = this.determineStatus(media);
 
-    return this.appModel.findByIdAndUpdate(
-      id, 
-      { ...updateAppDto, turma, media, status }, 
-      { new: true }
-    ).exec();
+    return this.appModel
+      .findByIdAndUpdate(
+        id,
+        { ...updateAppDto, turma, media, status },
+        { new: true }
+      )
+      .exec();
   }
 
   async remove(id: string): Promise<App> {
