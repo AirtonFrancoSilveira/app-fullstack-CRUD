@@ -4,6 +4,8 @@ import { DatabaseModule } from './database/database.module'; // Rota do módulo 
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AppModule as AppFeatureModule } from './modules/app/app.module'; // Rota do módulo App
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -12,7 +14,9 @@ import { AppModule as AppFeatureModule } from './modules/app/app.module'; // Rot
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
-    AppFeatureModule, // Importa o módulo AppFeatureModule
+    AppFeatureModule,
+    AuthModule,
+    UserModule
   ],
 })
 export class AppModule {}

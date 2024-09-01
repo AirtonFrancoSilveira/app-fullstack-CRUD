@@ -1,5 +1,14 @@
 // src/modules/app/dto/create-app.dto.ts
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Float } from '@nestjs/graphql';
+
+@InputType()
+export class NotaBimestreInput {
+  @Field()
+  bimestre: string;
+
+  @Field(() => Float)
+  nota: number;
+}
 
 @InputType()
 export class CreateAppDto {
@@ -12,15 +21,9 @@ export class CreateAppDto {
   @Field({ nullable: true })
   age?: number;
 
-  @Field({ nullable: true })
-  nota?: number;
-
-  @Field({ nullable: true })
-  bimestre?: string;
+  @Field(() => [NotaBimestreInput], { nullable: true })
+  notasPorBimestre?: NotaBimestreInput[];
 
   @Field({ nullable: true })
   curso?: string;
-
-  @Field({ nullable: true })
-  turma?: string;  // Campo de saída, não precisa ser enviado no input
 }
