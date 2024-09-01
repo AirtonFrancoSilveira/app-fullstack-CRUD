@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between mb-3">
+  <h3>Lista de Itens</h3>
+  <button class="btn btn-primary" (click)="router.navigate(['/create'])">Cadastrar Novo Item</button>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Curso</th>
+      <th>Turma</th>
+      <th>Status</th>
+      <th>Média</th>
+      <th>Notas por Bimestre</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let app of apps">
+      <td>{{ app.name }}</td>
+      <td>{{ app.email }}</td>
+      <td>{{ app.age }}</td>
+      <td>{{ app.curso || 'N/A' }}</td>
+      <td>{{ app.turma || 'N/A' }}</td>
+      <td>{{ app.status || 'N/A' }}</td>
+      <td>{{ app.media || 'N/A' }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let nota of app.notasPorBimestre">
+            {{ nota.bimestre }}: {{ nota.nota }}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <fa-icon [icon]="['fas', 'edit']" class="text-primary me-2" (click)="onEdit(app)"></fa-icon>
+        <fa-icon [icon]="['fas', 'trash']" class="text-danger" (click)="onDelete(app)"></fa-icon>
+      </td>
+    </tr>
+  </tbody>
+</table>
