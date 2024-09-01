@@ -6,7 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,  // Torna o ConfigModule acessível globalmente
+      isGlobal: true, // Torna o ConfigModule acessível globalmente
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -16,6 +16,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  exports: [MongooseModule],  // Exporta o MongooseModule para que outros módulos possam usá-lo
+  exports: [MongooseModule], // Exporta o MongooseModule para que outros módulos possam usá-lo
 })
 export class DatabaseModule {}
