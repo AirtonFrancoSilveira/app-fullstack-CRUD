@@ -1,4 +1,3 @@
-// src/modules/app/entities/app.entity.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
