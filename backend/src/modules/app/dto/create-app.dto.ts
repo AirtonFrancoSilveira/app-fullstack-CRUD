@@ -1,4 +1,3 @@
-// src/modules/app/dto/create-app.dto.ts
 import { InputType, Field, Float } from '@nestjs/graphql';
 
 @InputType()

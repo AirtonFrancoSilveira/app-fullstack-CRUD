@@ -1,4 +1,3 @@
-// src/modules/app/dto/update-app.dto.ts
 import { InputType, Field, PartialType, Float } from '@nestjs/graphql';
 import { CreateAppDto, NotaBimestreInput } from './create-app.dto';
 

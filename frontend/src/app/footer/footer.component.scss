@@ -14,7 +14,7 @@ html, body {
   
   .content {
     flex: 1;
-    margin-bottom: 20px; /* Adiciona um pequeno espaço acima do footer */
+    margin-bottom: 20px;
   }
   
   footer {
@@ -24,6 +24,6 @@ html, body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 1000; /* Certifique-se de que o footer fique acima de outros elementos */
+  z-index: 1000;
   }
   
