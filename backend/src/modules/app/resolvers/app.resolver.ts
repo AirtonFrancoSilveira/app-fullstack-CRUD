@@ -1,4 +1,3 @@
-// src/modules/app/resolvers/app.resolver.ts
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AppService } from '../services/app.service';
 import { App } from '../entities/app.entity';

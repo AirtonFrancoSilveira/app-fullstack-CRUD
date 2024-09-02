@@ -1,24 +1,25 @@
-// src/user/user.service.ts
+// src/modules/user/user.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { App } from '../modules/app/entities/app.entity'; // Ajuste a importação
+import { User } from './entities/user.entity';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(App.name) private userModel: Model<App>) {} // Altere para usar a entidade correta
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  // Criação de um novo usuário (sem senha criptografada)
-  async create(username: string, role: string): Promise<App> {
+  async create(username: string, password: string, role: string): Promise<User> {
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new this.userModel({
       username,
+      password: hashedPassword,
       role,
     });
     return newUser.save();
   }
 
-  // Busca de um usuário pelo nome de usuário
-  async findOneByUsername(name: string): Promise<App | undefined> {
-    return this.userModel.findOne({ name }).exec(); // Use 'name' ou outro campo existente
-  }  
+  async findOneByUsername(username: string): Promise<User | undefined> {
+    return this.userModel.findOne({ username }).exec();
+  }
 }
