@@ -11,7 +11,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        endOfLine: 'auto', // Exemplo de exceção
+        endOfLine: 'false', // Exemplo de exceção
       },
     ],
   },
