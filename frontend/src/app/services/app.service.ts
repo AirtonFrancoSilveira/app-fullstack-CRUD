@@ -12,29 +12,27 @@ export class AppService {
   constructor(private http: HttpClient) {}
 
   // Método para criar um novo item
-  createApp(appInput: any): Observable<any> {
+  createApp(appData: any): Observable<any> {
     const mutation = `
       mutation {
         createApp(createAppInput: {
-          name: "${appInput.name}",
-          email: "${appInput.email}",
-          age: ${appInput.age},
+          name: "${appData.name}",
+          email: "${appData.email}",
+          age: ${appData.age},
+          curso: "${appData.curso}",
           notasPorBimestre: [
-            { bimestre: "${appInput.notasPorBimestre[0].bimestre}", nota: ${appInput.notasPorBimestre[0].nota} },
-            { bimestre: "${appInput.notasPorBimestre[1].bimestre}", nota: ${appInput.notasPorBimestre[1].nota} },
-            { bimestre: "${appInput.notasPorBimestre[2].bimestre}", nota: ${appInput.notasPorBimestre[2].nota} },
-            { bimestre: "${appInput.notasPorBimestre[3].bimestre}", nota: ${appInput.notasPorBimestre[3].nota} }
+            { bimestre: "1º Bimestre", nota: ${appData.notasPorBimestre.bimestre1} },
+            { bimestre: "2º Bimestre", nota: ${appData.notasPorBimestre.bimestre2} },
+            { bimestre: "3º Bimestre", nota: ${appData.notasPorBimestre.bimestre3} },
+            { bimestre: "4º Bimestre", nota: ${appData.notasPorBimestre.bimestre4} }
           ]
         }) {
           _id
           name
-          turma
-          media
-          status
         }
       }
     `;
-    return this.http.post<any>(this.apiUrl, { query: mutation });
+    return this.http.post(this.apiUrl, { query: mutation });
   }
 
   getApps(): Observable<{ data: { apps: App[] } }> {
