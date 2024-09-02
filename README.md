@@ -1,4 +1,4 @@
-Sistema de Escola de Idiomas
+#Sistema de Escola de Idiomas
 Este é um sistema completo de gerenciamento de uma escola de idiomas, desenvolvido utilizando Angular para o frontend e Node.js com GraphQL para o backend. Ele permite cadastrar, listar, editar e excluir alunos, além de calcular automaticamente a média e o status (Aprovado/Reprovado) dos alunos com base nas notas fornecidas.
 
 Sumário
