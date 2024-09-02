@@ -20,24 +20,24 @@ export class ItemCreateComponent {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       age: ['', [Validators.required, Validators.min(1)]],
+      curso: ['', Validators.required],
       notasPorBimestre: this.fb.group({
-        bimestre1: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
-        bimestre2: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
-        bimestre3: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
-        bimestre4: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
+        bimestre1: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
+        bimestre2: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
+        bimestre3: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
+        bimestre4: [null, [Validators.required, Validators.min(0), Validators.max(10)]]
       })
     });
   }
 
-  onSubmit(event: Event) {
-    event.preventDefault(); // Previne o comportamento padrão do formulário de recarregar a página
-    console.log('Formulário submetido', this.createForm.value);
+  onSubmit(): void {
     if (this.createForm.valid) {
       const formValues = this.createForm.value;
       const appInput = {
         name: formValues.name,
         email: formValues.email,
         age: formValues.age,
+        curso: formValues.curso,
         notasPorBimestre: [
           { bimestre: '1º Bimestre', nota: formValues.notasPorBimestre.bimestre1 },
           { bimestre: '2º Bimestre', nota: formValues.notasPorBimestre.bimestre2 },
