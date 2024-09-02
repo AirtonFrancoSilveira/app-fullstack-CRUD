@@ -1,22 +1,29 @@
-body, html {
+html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-}
-
-#content {
+  }
+  
+  #app-root {
     flex: 1;
-}
-
-footer {
-    background-color: #f8f9fa; 
-    padding: 1rem;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-top: auto; 
-}
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    flex: 1;
+    margin-bottom: 20px; /* Adiciona um pequeno espaço acima do footer */
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Certifique-se de que o footer fique acima de outros elementos */
+  }
+  

@@ -1,44 +1,53 @@
 <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Nome</label>
+    <input id="name" formControlName="name" class="form-control" type="text">
+    <div *ngIf="createForm.get('name')?.touched && createForm.get('name')?.invalid" class="text-danger">
+      O nome é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" class="form-control" type="email">
+    <div *ngIf="createForm.get('email')?.touched && createForm.get('email')?.invalid" class="text-danger">
+      <div *ngIf="createForm.get('email')?.errors?.['required']">O email é obrigatório.</div>
+      <div *ngIf="createForm.get('email')?.errors?.['email']">Insira um email válido (exemplo@dominio.com).</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="age">Idade</label>
+    <input id="age" formControlName="age" class="form-control" type="number">
+  </div>
+  <div class="form-group">
+    <label for="curso">Curso</label>
+    <select id="curso" formControlName="curso" class="form-control">
+      <option value="" disabled selected>Selecione um curso</option>
+      <option value="Ingles Básico">Inglês Básico</option>
+      <option value="Inglês Intermediario">Inglês Intermediário</option>
+      <option value="Ingles avançado">Inglês Avançado</option>
+      <option value="Conversation">Conversation</option>
+    </select>
+    <div *ngIf="createForm.get('curso')?.touched && createForm.get('curso')?.invalid" class="text-danger">
+      O curso é obrigatório.
+    </div>
+  </div>
+  <div formGroupName="notasPorBimestre">
     <div class="form-group">
-      <label for="name">Nome</label>
-      <input id="name" formControlName="name" class="form-control" type="text">
+      <label for="bimestre1">1º Bimestre</label>
+      <input id="bimestre1" formControlName="bimestre1" class="form-control" type="number">
     </div>
     <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" formControlName="email" class="form-control" type="email">
+      <label for="bimestre2">2º Bimestre</label>
+      <input id="bimestre2" formControlName="bimestre2" class="form-control" type="number">
     </div>
     <div class="form-group">
-      <label for="age">Idade</label>
-      <input id="age" formControlName="age" class="form-control" type="number">
+      <label for="bimestre3">3º Bimestre</label>
+      <input id="bimestre3" formControlName="bimestre3" class="form-control" type="number">
     </div>
     <div class="form-group">
-      <label for="curso">Curso</label>
-      <select id="curso" formControlName="curso" class="form-control">
-        <option value="" disabled selected>Selecione um curso</option>
-        <option value="Ingles Básico">Inglês Básico</option>
-        <option value="Inglês Intermediario">Inglês Intermediário</option>
-        <option value="Ingles avançado">Inglês Avançado</option>
-        <option value="Conversation">Conversation</option>
-      </select>
+      <label for="bimestre4">4º Bimestre</label>
+      <input id="bimestre4" formControlName="bimestre4" class="form-control" type="number">
     </div>
-    <div formGroupName="notasPorBimestre">
-      <div class="form-group">
-        <label for="bimestre1">1º Bimestre</label>
-        <input id="bimestre1" formControlName="bimestre1" class="form-control" type="number">
-      </div>
-      <div class="form-group">
-        <label for="bimestre2">2º Bimestre</label>
-        <input id="bimestre2" formControlName="bimestre2" class="form-control" type="number">
-      </div>
-      <div class="form-group">
-        <label for="bimestre3">3º Bimestre</label>
-        <input id="bimestre3" formControlName="bimestre3" class="form-control" type="number">
-      </div>
-      <div class="form-group">
-        <label for="bimestre4">4º Bimestre</label>
-        <input id="bimestre4" formControlName="bimestre4" class="form-control" type="number">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-  </form>
-  
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
