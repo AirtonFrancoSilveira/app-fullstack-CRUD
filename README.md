@@ -36,8 +36,8 @@ Antes de começar, certifique-se de ter o seguinte instalado em seu ambiente de 
 Clone o repositório do projeto em seu ambiente local:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/usuario/repositorio.git
+cd repositorio
 
 
 Instalando Dependências
@@ -88,7 +88,6 @@ Criando um Container MongoDB
 Para configurar o MongoDB utilizando Docker, execute o seguinte comando para criar e iniciar um container:
 
 bash
-Copiar código
 docker run -d -p 27017:27017 --name mongodb-escola -v ~/data:/data/db mongo
 Isso cria um container chamado mongodb-escola que estará disponível em mongodb://localhost:27017.
 
@@ -96,19 +95,10 @@ Verificando o MongoDB
 Para verificar se o MongoDB está rodando corretamente, utilize o seguinte comando:
 
 bash
-Copiar código
 docker ps
 Você deve ver o container mongodb-escola em execução. Caso queira acessar o MongoDB dentro do container, use:
 
 bash
-Copiar código
 docker exec -it mongodb-escola mongo
 Considerações Finais
 Agora que você configurou o ambiente, é possível começar a desenvolver e testar o sistema. O frontend se comunica com o backend através da API GraphQL, e todos os dados são persistidos no MongoDB configurado no Docker. Certifique-se de que o backend e o MongoDB estejam rodando antes de iniciar o frontend para evitar problemas de comunicação.
-
-Se tiver dúvidas ou problemas, consulte a documentação oficial das tecnologias utilizadas ou entre em contato com o mantenedor do projeto.
-
-perl
-Copiar código
-
-Este arquivo `README.md` fornece instruções claras e detalhadas para rodar o backend, o frontend e conf
